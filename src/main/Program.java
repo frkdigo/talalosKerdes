@@ -148,10 +148,11 @@ public class Program extends javax.swing.JFrame {
 
     private void kincsKereses(boolean vanKincs){
         if(vanKincs){
-            JOptionPane.showMessageDialog(null, "Megtaláltad a kincset!", "", 1);
+            JOptionPane.showMessageDialog(null, "Megtaláltad a kincset!\nA játéknak vége", "Ládanyitás", 1);
+            
         }
         else{
-            JOptionPane.showMessageDialog(null, "Nem talált!", "", 0);
+            JOptionPane.showMessageDialog(null, "Nem talált!", "Ládanyitás", 0);
         }
     }
     
