@@ -40,7 +40,12 @@ public class Program extends javax.swing.JFrame {
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DO_NOTHING_ON_CLOSE);
+        addWindowListener(new java.awt.event.WindowAdapter() {
+            public void windowClosing(java.awt.event.WindowEvent evt) {
+                formWindowClosing(evt);
+            }
+        });
 
         ARANY.setIcon(new javax.swing.ImageIcon(getClass().getResource("/image/images.png"))); // NOI18N
         ARANY.addActionListener(new java.awt.event.ActionListener() {
@@ -85,9 +90,9 @@ public class Program extends javax.swing.JFrame {
                 .addContainerGap()
                 .addComponent(ARANY, javax.swing.GroupLayout.PREFERRED_SIZE, 221, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(26, 26, 26)
-                .addComponent(EZÜST)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 27, Short.MAX_VALUE)
-                .addComponent(BRONZ)
+                .addComponent(EZÜST, javax.swing.GroupLayout.PREFERRED_SIZE, 220, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(BRONZ, javax.swing.GroupLayout.PREFERRED_SIZE, 219, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -96,13 +101,13 @@ public class Program extends javax.swing.JFrame {
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 116, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(110, 110, 110)
                         .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 190, Short.MAX_VALUE))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(44, 44, 44)
                         .addComponent(jLabel4)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jLabel5)
-                        .addGap(171, 171, 171)))
+                        .addGap(105, 105, 105)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jLabel3)
@@ -130,9 +135,8 @@ public class Program extends javax.swing.JFrame {
                     .addComponent(jLabel6))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                        .addComponent(ARANY, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addComponent(BRONZ, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(ARANY, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BRONZ, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(EZÜST, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 106, Short.MAX_VALUE)
                 .addComponent(jLabel7, javax.swing.GroupLayout.PREFERRED_SIZE, 45, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -144,10 +148,10 @@ public class Program extends javax.swing.JFrame {
 
     private void kincsKereses(boolean vanKincs){
         if(vanKincs){
-            JOptionPane.showMessageDialog(null, "Itt van a kincs");
+            JOptionPane.showMessageDialog(null, "Megtaláltad a kincset!", "", 1);
         }
         else{
-            JOptionPane.showMessageDialog(null, "Itt sajnos nincs kincs");
+            JOptionPane.showMessageDialog(null, "Nem talált!", "", 0);
         }
     }
     
@@ -162,6 +166,17 @@ public class Program extends javax.swing.JFrame {
     private void BRONZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRONZActionPerformed
         kincsKereses(k3.getKincs());
     }//GEN-LAST:event_BRONZActionPerformed
+
+    private void formWindowClosing(java.awt.event.WindowEvent evt) {//GEN-FIRST:event_formWindowClosing
+        int kilepes = JOptionPane.showConfirmDialog(null,"Biztosan ki szeretne lépni a játékból?", "Kilépés", JOptionPane.YES_NO_OPTION);
+        if(kilepes == JOptionPane.YES_OPTION){
+            System.out.println("A játéknak vége!");
+            System.exit(0);
+        }else{
+            System.out.println("A játék folytatódik!");
+        }
+        
+    }//GEN-LAST:event_formWindowClosing
 
     /**
      * @param args the command line arguments
