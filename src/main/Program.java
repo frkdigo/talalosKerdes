@@ -3,6 +3,7 @@
  * Click nbfs://nbhost/SystemFileSystem/Templates/GUIForms/JFrame.java to edit this template
  */
 package main;
+import javax.swing.JOptionPane;
 import modell.KincsesLada;
 /**
  *
@@ -93,7 +94,7 @@ public class Program extends javax.swing.JFrame {
             .addGroup(layout.createSequentialGroup()
                 .addGap(121, 121, 121)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(ARANY, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(ARANY, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(BRONZ, javax.swing.GroupLayout.PREFERRED_SIZE, 150, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(EZÜST, javax.swing.GroupLayout.PREFERRED_SIZE, 152, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -109,18 +110,25 @@ public class Program extends javax.swing.JFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void ARANYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ARANYActionPerformed
-        if(k1.getKincs()){
-            
+    private void kincsKereses(boolean vanKincs){
+        if(vanKincs){
+            JOptionPane.showMessageDialog(null, "Itt van a kincs");
         }
+        else{
+            JOptionPane.showMessageDialog(null, "Itt sajnos nincs kincs");
+        }
+    }
+    
+    private void ARANYActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_ARANYActionPerformed
+        kincsKereses(k1.getKincs());
     }//GEN-LAST:event_ARANYActionPerformed
 
     private void EZÜSTActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EZÜSTActionPerformed
-        
+        kincsKereses(k2.getKincs());
     }//GEN-LAST:event_EZÜSTActionPerformed
 
     private void BRONZActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BRONZActionPerformed
-        // TODO add your handling code here:
+        kincsKereses(k3.getKincs());
     }//GEN-LAST:event_BRONZActionPerformed
 
     /**
